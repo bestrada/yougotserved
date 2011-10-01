@@ -5,7 +5,7 @@ p Get ready to serve...
 script(type='text/javascript')
 	(function() {
 		var publisher;
-		$.when(YGS.tbconnect).then(function(session) {
+		$.when(YGS.tbconnect).then(function(session, event) {
 			publisher = session.publish('publisherDiv');
 		});
 	})();

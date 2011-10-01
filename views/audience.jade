@@ -6,7 +6,12 @@ p Vote for your favorite dancer!
 
 script(type='text/javascript')
 	(function() {
-		$.when(YGS.tbconnect).then(function(session) {
-			debugger;
+		$.when(YGS.tbconnect).then(function(session, event) {
+			var i;
+			var streams = event.streams;
+			for (i=0; i < streams.length && i < 2; i++) {
+				debugger;
+				session.subscribe(streams[i], "stream" + (1 + i));
+			}
 		});
 	})();

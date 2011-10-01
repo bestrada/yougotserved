@@ -4,7 +4,9 @@
 var express = require('express');
 var opentok = require('opentok');
 
+
 var app = module.exports = express.createServer();
+var io = require('socket.io').listen(app);
 
 // Configuration
 app.configure(function() {
@@ -60,7 +62,7 @@ function(req, res) {
 
 app.get('/audience', 
 function(req, res) {
-	var subtoken = ot.generateToken({sessionId:globalSession.sessionId});
+	var subtoken = ot.generateToken({sessionId:globalSession.sessionId, role:"subscriber" });
 	res.render('audience', {
 		key:otkey,
 		token:subtoken,
@@ -68,6 +70,12 @@ function(req, res) {
 	});
 });
 
+io.sockets.on('connection', function(socket) {
+	socket.emit('news', {hello:'world'});
+	socket.on('my other event', function(data) {
+		console.log(data);
+	});
+});
 
 app.listen(8080);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
