@@ -4,13 +4,13 @@
 .clearfix
 	#stream1.hidden.votestream.fl
 		#foo.stream
-		.votebox.center
-			a.btn.primary.vote(href="javascript:void(0);") vote
+		.votebox.center.ptm
+			a.btn.primary.vote(href="javascript:void(0);", data-party="blue") vote
 	
 	#stream2.hidden.votestream.fr
 		#bar.stream
-		.votebox.center
-			a.btn.danger.vote(href="javascript:void(0);") vote
+		.votebox.center.ptm
+			a.btn.danger.vote(href="javascript:void(0);", data-party="red") vote
 		
 #results
 

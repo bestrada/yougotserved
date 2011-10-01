@@ -5,9 +5,12 @@ var VoteStream = Backbone.View.extend({
 	},
 	
 	onVote : function(event) {
-		var streamId = $(event.target).data('streamId');
-		if (streamId) {
-			YGS.socket.emit('vote', {candidate:streamId});
+		var target = $(event.target);
+		if (target && target.length) {
+			YGS.socket.emit('vote', {
+				candidate : target.data('streamId'), 
+				side : target.data('party')
+			});
 		}
 	}
 });
