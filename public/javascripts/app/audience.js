@@ -27,6 +27,7 @@ var ResultsBox = Backbone.View.extend({
 		
 		$("#scoreBlue").html(blueScore.toFixed(0));
 		$("#scoreRed").html(redScore.toFixed(0));
+		$("#count").html(ballot.blue + ballot.red);
 	}
 });
 
