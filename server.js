@@ -70,12 +70,14 @@ function(req, res) {
 	});
 });
 
-var ballot = {};
+var ballot = {
+	"red":0,
+	"blue":0
+};
 io.sockets.on('connection', function(socket) {
 	socket.on('vote', function(data) {
-		//increment the vote count for that candidate
-		ballot[data.candidate] = ballot[data.candidate] ? (1 + ballot[data.candidate]) : 1;
-		
+		//increment the vote count for that side
+		ballot[data.side] = 1 + ballot[data.side];
 		// emit results to connected clients
 		io.sockets.emit('results', ballot);
 	});

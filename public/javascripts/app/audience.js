@@ -8,7 +8,6 @@ var VoteStream = Backbone.View.extend({
 		var target = $(event.target);
 		if (target && target.length) {
 			YGS.socket.emit('vote', {
-				candidate : target.data('streamId'), 
 				side : target.data('party')
 			});
 		}
@@ -22,6 +21,7 @@ var ResultsBox = Backbone.View.extend({
 	
 	onResults : function(ballot) {
 		// ballot is a map of all the candidates
+		debugger;
 	}
 });
 
