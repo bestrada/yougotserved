@@ -30,7 +30,8 @@ function() {
 });
 
 // create opentok session
-var ot = new opentok.OpenTokSDK('5318111','0318fa04074ce9c76bbb13b8d1e367a386be7d2a');
+var otkey = '5318111';
+var ot = new opentok.OpenTokSDK(otkey,'0318fa04074ce9c76bbb13b8d1e367a386be7d2a');
 var globalSession = false;
 
 ot.createSession('bestrada.dyndns.org', {}, function(session) {
@@ -42,23 +43,29 @@ app.get('/',
 function(req, res) {
     res.render('index', {
         title: 'You Got Served',
-		key:'5318111'
+		key:otkey,
+		token:false
     });
 });
 
 app.get('/dancer', 
 function(req, res) {
-	var ottoken = ot.generateToken({sessionId:globalSession.sessionId});
+	var pubtoken = ot.generateToken({sessionId:globalSession.sessionId});
 	res.render('dancer', {
-		key:'5318111',
-		token:ottoken,
+		key:otkey,
+		token:pubtoken,
 		sessionId:globalSession.sessionId
 	});
 });
 
 app.get('/audience', 
 function(req, res) {
-	
+	var subtoken = ot.generateToken({sessionId:globalSession.sessionId});
+	res.render('audience', {
+		key:otkey,
+		token:subtoken,
+		sessionId:globalSession.sessionId
+	});
 });
 
 

@@ -1,10 +1,29 @@
 !!!
 html
 	head
-		title= title
+		title You Got Served!
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(type='text/javascript', src='/javascripts/jquery.min.js')
 		script(type='text/javascript', src='/javascripts/underscore-min.js')
 		script(type='text/javascript', src='/javascripts/backbone-min.js')
+		script(type='text/javascript', src='/javascripts/app/main.js')
 		script(type='text/javascript', src='http://staging.tokbox.com/v0.91/js/TB.min.js')
-	body!= body
+	body
+		!{body}
+		- if (token)
+			script(type='text/javascript')
+				(function() {
+					var apiKey = '#{key}';
+					var sessionId = '#{sessionId}';
+					var token = '#{token}';           
+
+					TB.setLogLevel(TB.DEBUG); // Set this for helpful debugging messages in console
+
+					var session = TB.initSession(sessionId);      
+					session.addEventListener('sessionConnected', sessionConnectedHandler);      
+					session.connect(apiKey, token);
+
+					function sessionConnectedHandler(event) {
+						YGS.tbconnect.resolve(session);
+					}
+				})();
