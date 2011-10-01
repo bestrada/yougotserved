@@ -2,6 +2,7 @@
 html
 	head
 		title You Got Served!
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(type='text/javascript', src='/javascripts/jquery.min.js')
 		script(type='text/javascript', src='/javascripts/underscore-min.js')
@@ -10,7 +11,16 @@ html
 		script(type='text/javascript', src='http://staging.tokbox.com/v0.91/js/TB.min.js')
 		script(type='text/javascript', src='/javascripts/app/main.js')
 	body
-		!{body}
+		.topbar
+			.fill
+				.container
+					a.brand(href="/") You Got Served!
+		.container
+			.content
+				!{body}
+			footer
+				p &copy; Bryan Estrada 2011
+			
 		- if (token)
 			script(type='text/javascript')
 				(function() {

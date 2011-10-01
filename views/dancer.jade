@@ -1,11 +1,10 @@
 h1 Hello Dancer
-p Get ready to serve...
-#publisherDiv
+p#loading Get ready to serve...
 
 script(type='text/javascript')
 	(function() {
 		var publisher;
 		$.when(YGS.tbconnect).then(function(session, event) {
-			publisher = session.publish('publisherDiv');
+			publisher = session.publish('loading');
 		});
 	})();

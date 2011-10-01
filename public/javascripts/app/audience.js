@@ -12,11 +12,23 @@ var VoteStream = Backbone.View.extend({
 	}
 });
 
+var ResultsBox = Backbone.View.extend({
+	initialize : function(event) {
+		YGS.socket.on('results', $.proxy(this.onResults, this));
+	},
+	
+	onResults : function(ballot) {
+		// ballot is a map of all the candidates
+	}
+});
+
 (function() {
 	
 	$(".votestream").each(function(index, element) {
 		new VoteStream({el:element});
 	});
+	
+	new ResultsBox($("#results"));
 	
 	$.when(YGS.tbconnect).then(function(session, event) {
 		var i;

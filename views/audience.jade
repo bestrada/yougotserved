@@ -1,15 +1,18 @@
-h1 Hello Audience
-p Vote for your favorite dancer!
+.page-header
+	h1 Vote for your favorite dancer!
 
-#stream1.hidden.votestream
-	#foo.stream
-	.votebox
-		a.vote(href="javascript:void(0);") vote
+.clearfix
+	#stream1.hidden.votestream.fl
+		#foo.stream
+		.votebox.center
+			a.btn.primary.vote(href="javascript:void(0);") vote
 	
-#stream2.hidden.votestream
-	#bar.stream
-	.votebox
-		a.vote(href="javascript:void(0);") vote
+	#stream2.hidden.votestream.fr
+		#bar.stream
+		.votebox.center
+			a.btn.danger.vote(href="javascript:void(0);") vote
+		
+#results
 
 script(type='text/javascript', src="/javascripts/app/audience.js")
 

@@ -77,7 +77,7 @@ io.sockets.on('connection', function(socket) {
 		ballot[data.candidate] = ballot[data.candidate] ? (1 + ballot[data.candidate]) : 1;
 		
 		// emit results to connected clients
-		socket.emit('results', ballot);
+		io.sockets.emit('results', ballot);
 	});
 });
 
