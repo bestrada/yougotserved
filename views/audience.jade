@@ -1,17 +1,15 @@
 h1 Hello Audience
 p Vote for your favorite dancer!
 
-#stream1
-#stream2
+#stream1.hidden.votestream
+	#foo.stream
+	.votebox
+		a.vote(href="javascript:void(0);") vote
+	
+#stream2.hidden.votestream
+	#bar.stream
+	.votebox
+		a.vote(href="javascript:void(0);") vote
 
-script(type='text/javascript')
-	(function() {
-		$.when(YGS.tbconnect).then(function(session, event) {
-			var i;
-			var streams = event.streams;
-			for (i=0; i < streams.length && i < 2; i++) {
-				debugger;
-				session.subscribe(streams[i], "stream" + (1 + i));
-			}
-		});
-	})();
+script(type='text/javascript', src="/javascripts/app/audience.js")
+
