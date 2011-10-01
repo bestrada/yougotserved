@@ -56,3 +56,10 @@ body {
 	clear:both;
 	display:block;
 }
+#results {
+	width:256px; height:200px; line-height:200px;
+}
+#scoreBlue { color:blue; }
+#scoreRed { color:red; }
+.score { font-size:32px; font-weight:bold; }
+.score:after { content:'%'; }

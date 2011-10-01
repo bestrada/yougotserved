@@ -2,6 +2,7 @@
 	h1 Vote for your favorite dancer!
 
 .clearfix
+	
 	#stream1.hidden.votestream.fl
 		#foo.stream
 		.votebox.center.ptm
@@ -11,8 +12,13 @@
 		#bar.stream
 		.votebox.center.ptm
 			a.btn.danger.vote(href="javascript:void(0);", data-party="red") vote
-		
-#results
+			
+	#results.center
+		#scoreBlue.score.fl 0
+		#scoreRed.score.fr 0
+		.gauge
+			.inner
+
 
 script(type='text/javascript', src="/javascripts/app/audience.js")
 

@@ -21,7 +21,12 @@ var ResultsBox = Backbone.View.extend({
 	
 	onResults : function(ballot) {
 		// ballot is a map of all the candidates
-		debugger;
+		var total = ballot.red + ballot.blue;
+		var blueScore = 100 * ballot.blue / total;
+		var redScore = 100 * ballot.red / total;
+		
+		$("#scoreBlue").html(blueScore.toFixed(0));
+		$("#scoreRed").html(redScore.toFixed(0));
 	}
 });
 
