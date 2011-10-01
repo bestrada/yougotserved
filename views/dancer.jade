@@ -1,21 +1,11 @@
-h1= Hello Dancer
+h1 Hello Dancer
 p Get ready to serve...
 #publisherDiv
 
-p.classname
-	a(href='/audience') hello dude
-	script(type='text/javascript')
-	var apiKey = '#{key}';
-	var sessionId = '#{sessionId}';
-	var token = '#{token}';           
-
-	TB.setLogLevel(TB.DEBUG); // Set this for helpful debugging messages in console
-
-	var session = TB.initSession(sessionId);      
-	session.addEventListener('sessionConnected', sessionConnectedHandler);      
-	session.connect(apiKey, token);
-	
-	var publisher;
-	function sessionConnectedHandler(event) {
-		publisher = session.publish('publisherDiv');
-	}
+script(type='text/javascript')
+	(function() {
+		var publisher;
+		$.when(YGS.tbconnect).then(function(session) {
+			publisher = session.publish('publisherDiv');
+		});
+	})();
