@@ -8,7 +8,8 @@ var VoteStream = Backbone.View.extend({
 		var target = $(event.target);
 		if (target && target.length) {
 			YGS.socket.emit('vote', {
-				side : target.data('party')
+				side : target.data('party'),
+				streamId : target.data('streamId')
 			});
 		}
 	}

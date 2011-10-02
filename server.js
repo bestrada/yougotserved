@@ -72,16 +72,20 @@ function(req, res) {
 
 var ballot = {
 	"red":0,
-	"blue":0
+	"blue":0,
+	"streams" : {
+		"foo":"bar"
+	}
 };
 io.sockets.on('connection', function(socket) {
 	socket.on('vote', function(data) {
 		//increment the vote count for that side
 		ballot[data.side] = 1 + ballot[data.side];
+		ballot.streams[data.streamId] = ballot[data.side];
 		// emit results to connected clients
 		io.sockets.emit('results', ballot);
 	});
 });
 
-app.listen(80);
+app.listen(8080);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

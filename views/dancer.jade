@@ -1,10 +1,8 @@
 h1 Wutup
+.feedback.fr
+	span You have have:&nbsp;
+	span#score.score 0
+	span &nbsp; of all votes
 p#loading Get ready to serve...
 
-script(type='text/javascript')
-	(function() {
-		var publisher;
-		$.when(YGS.tbconnect).then(function(session, event) {
-			publisher = session.publish('loading');
-		});
-	})();
+script(type='text/javascript', src="/javascripts/app/dancer.js")
